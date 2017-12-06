@@ -871,7 +871,7 @@ function (_, $) {
     params: [
       { name: "type", type: "string", optional: true },
     ],
-    defaultParams: ["all", "with_anomlalies_only", "only_anomalies"],
+    defaultParams: ["all", "with_anomalies_only", "only_anomalies"],
     version: '1.1'
   });
 
