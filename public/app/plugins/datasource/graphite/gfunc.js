@@ -865,6 +865,16 @@ function (_, $) {
     version: '1.1'
   });
 
+  addFuncDef({
+    name: "anomaly",
+    category: categories.Special,
+    params: [
+      { name: "type", type: "string", optional: true },
+    ],
+    defaultParams: ["all", "with_anomlalies_only", "only_anomalies"],
+    version: '1.1'
+  });
+
   _.each(categories, function(funcList, catName) {
     categories[catName] = _.sortBy(funcList, 'name');
   });
