@@ -868,10 +868,8 @@ function (_, $) {
   addFuncDef({
     name: "anomaly",
     category: categories.Special,
-    params: [
-      { name: "type", type: "string", optional: true },
-    ],
-    defaultParams: ["all", "with_anomalies_only", "only_anomalies"],
+    params: [{ name: "type", type: "select", options: ['all', 'with_anomalies_only', 'only_anomalies']}],
+    defaultParams: ['all'],
     version: '1.1'
   });
 
