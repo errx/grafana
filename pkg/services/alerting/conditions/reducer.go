@@ -2,6 +2,7 @@ package conditions
 
 import (
 	"math"
+	"strings"
 
 	"sort"
 
@@ -150,6 +151,21 @@ func (s *SimpleReducer) Reduce(series *tsdb.TimeSeries) null.Float {
 
 		if value > 0 {
 			allNull = false
+		}
+
+	case "anomalies":
+		if strings.HasPrefix(series.Name, "[anomaly] ") {
+			for _, v := range series.Points {
+				if v[0].Valid {
+					value++
+				}
+			}
+			if value > 0 {
+				allNull = false
+			}
+		} else {
+			value = 0
+			allNull = true
 		}
 	}
 
