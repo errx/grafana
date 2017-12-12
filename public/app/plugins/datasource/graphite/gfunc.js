@@ -872,6 +872,16 @@ function (_, $) {
     defaultParams: ['all'],
     version: '1.1'
   });
+  addFuncDef({
+    name: 'baseline',
+    category: categories.Special,
+    params: [
+      { name: "timeShiftUnit", type: "select", options: ['1d', '7d'] },
+      { name: "timeShiftStart", type: "int" },
+      { name: "timeShiftEnd", type: "int" }
+    ],
+    defaultParams: ['7d', 1, 4]
+  });
 
   _.each(categories, function(funcList, catName) {
     categories[catName] = _.sortBy(funcList, 'name');
