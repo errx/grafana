@@ -865,6 +865,25 @@ function (_, $) {
     version: '1.1'
   });
 
+  addFuncDef({
+    name: "anomaly",
+    category: categories.Special,
+    params: [{ name: "type", type: "select", options: ['all', 'with_anomalies_only', 'only_anomalies']}],
+    defaultParams: ['all'],
+    version: '1.1'
+  });
+  addFuncDef({
+    name: 'baseline',
+    category: categories.Special,
+    params: [
+      { name: "timeShiftUnit", type: "select", options: ['7d', '1d'] },
+      { name: "timeShiftStart", type: "int" },
+      { name: "timeShiftEnd", type: "int" },
+      { name: "maxAbsentPercent", type: "int", optional: true },
+      { name: "minAvg", type: "int", optional: true }
+    ],
+    defaultParams: ['7d', 1, 4]
+  });
   _.each(categories, function(funcList, catName) {
     categories[catName] = _.sortBy(funcList, 'name');
   });
