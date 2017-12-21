@@ -868,7 +868,11 @@ function (_, $) {
   addFuncDef({
     name: "anomaly",
     category: categories.Special,
-    params: [{ name: "type", type: "select", options: ['all', 'with_anomalies_only', 'only_anomalies']}],
+      params: [
+          { name: "type", type: "select", options: ['all', 'with_anomalies_only', 'only_anomalies']},
+          { name: "threshold", type: "int", optional: true },
+          { name: "offset", type: "string", optional: true },
+      ],
     defaultParams: ['all'],
     version: '1.1'
   });
