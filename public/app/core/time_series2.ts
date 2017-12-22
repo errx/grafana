@@ -67,7 +67,7 @@ export default class TimeSeries {
       this.yaxis = 2;
       this.points = {};
       this.points.show = true;
-      this.points.radius = 5;
+      this.points.radius = 4;
       this.nullPointMode = null;
     }
   }

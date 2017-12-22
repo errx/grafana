@@ -11,9 +11,14 @@ export class ThresholdMapper {
       if (condition.type !== 'query') {
         continue;
       }
-
       var evaluator = condition.evaluator;
       var thresholds = panel.thresholds = [];
+
+      var reducer = condition.reducer;
+      if (reducer.type === 'anomalies') {
+        // Do not draw thresholds for anomalies reducer
+        continue;
+      }
 
       switch (evaluator.type) {
         case "gt": {
