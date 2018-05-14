@@ -74,6 +74,7 @@ export default class TimeSeries {
   legend: boolean;
   allIsNull: boolean;
   allIsZero: boolean;
+  overridden: boolean;
   decimals: number;
   scaledDecimals: number;
   hasMsResolution: boolean;
@@ -102,8 +103,19 @@ export default class TimeSeries {
     this.valueFormater = kbn.valueFormats.none;
     this.stats = {};
     this.legend = true;
+    this.overridden = false;
     this.unit = opts.unit;
     this.hasMsResolution = this.isMsResolutionNeeded();
+  }
+
+  prepareAnomalies() {
+    if (!this.overridden && this.alias.indexOf('[anomaly] ') === 0) {
+      this.yaxis = 2;
+      this.points = {};
+      this.points.show = true;
+      this.points.radius = 4;
+      this.nullPointMode = null;
+    }
   }
 
   applySeriesOverrides(overrides) {
@@ -180,6 +192,7 @@ export default class TimeSeries {
       if (override.yaxis !== void 0) {
         this.yaxis = override.yaxis;
       }
+      this.overridden = true;
     }
   }
 

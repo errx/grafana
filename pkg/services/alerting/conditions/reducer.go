@@ -2,8 +2,8 @@ package conditions
 
 import (
 	"math"
-
 	"sort"
+	"strings"
 
 	"github.com/grafana/grafana/pkg/components/null"
 	"github.com/grafana/grafana/pkg/tsdb"
@@ -150,6 +150,21 @@ func (s *SimpleReducer) Reduce(series *tsdb.TimeSeries) null.Float {
 
 		if value > 0 {
 			allNull = false
+		}
+
+	case "anomalies":
+		if strings.HasPrefix(series.Name, "[anomaly] ") {
+			for _, v := range series.Points {
+				if v[0].Valid {
+					value++
+				}
+			}
+			if value > 0 {
+				allNull = false
+			}
+		} else {
+			value = 0
+			allNull = true
 		}
 	}
 
