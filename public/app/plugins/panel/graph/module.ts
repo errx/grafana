@@ -227,6 +227,7 @@ class GraphCtrl extends MetricsPanelCtrl {
 
     for (let series of this.seriesList) {
       series.applySeriesOverrides(this.panel.seriesOverrides);
+      series.prepareAnomalies();
 
       if (series.unit) {
         this.panel.yaxes[series.yaxis - 1].format = series.unit;
