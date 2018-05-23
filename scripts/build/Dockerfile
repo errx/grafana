@@ -1,4 +1,4 @@
-FROM centos:6.6
+FROM centos:7
 
 RUN yum install -y yum-plugin-ovl initscripts curl tar gcc libc6-dev git gcc-c++ openssl-devel && \
     yum install -y g++ make automake autoconf curl-devel zlib-devel httpd-devel apr-devel apr-util-devel sqlite-devel && \
