@@ -28,6 +28,8 @@ RUN wget https://dl.yarnpkg.com/rpm/yarn.repo -O /etc/yum.repos.d/yarn.repo && \
     wget https://storage.googleapis.com/golang/go${GOLANG_VERSION}.linux-amd64.tar.gz && \
     tar -C /usr/local -xzf go${GOLANG_VERSION}.linux-amd64.tar.gz
 
+RUN /bin/bash -l -c "gem install --no-ri --no-rdoc fpm"
+
 
 ENV PATH /usr/local/go/bin:$PATH
 
