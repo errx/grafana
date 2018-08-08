@@ -4,7 +4,7 @@ RUN yum install -y yum-plugin-ovl initscripts curl tar gcc libc6-dev git gcc-c++
     yum install -y g++ make automake autoconf curl-devel zlib-devel httpd-devel apr-devel apr-util-devel sqlite-devel && \
     yum install -y wget yum-utils bzip2 bzip2-devel && \
     yum install -y fontconfig freetype freetype-devel fontconfig-devel libstdc++ && \
-    yum install -y rpm-build patch readline readline-devel libtool bison lzma && \
+    yum install -y rpm-build patch readline readline-devel libyaml libtool bison lzma && \
     yum install -y which tar
 
 # Install RUBY 1.9.3
