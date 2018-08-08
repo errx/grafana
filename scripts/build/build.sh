@@ -14,10 +14,10 @@ echo "current dir: $(pwd)"
 
 if [ "$CIRCLE_TAG" != "" ]; then
   echo "Building releases from tag $CIRCLE_TAG"
-  CC=${CCX64} go run build.go -includeBuildNumber=false build
+  go run build.go -includeBuildNumber=false build
 else
   echo "Building incremental build for $CIRCLE_BRANCH"
-  CC=${CCX64} go run build.go -buildNumber=${CIRCLE_BUILD_NUM} build
+  go run build.go -buildNumber=${CIRCLE_BUILD_NUM} build
 fi
 
 yarn install --pure-lockfile --no-progress
