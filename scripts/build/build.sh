@@ -22,7 +22,7 @@ else
 fi
 
 gem install fpm -v 1.4
-yarn install --pure-lockfile --no-progress
+yarn install --pure-lockfile --no-progress --network-timeout 10000
 
 echo "current dir: $(pwd)"
 
