@@ -5,7 +5,8 @@ RUN yum install -y yum-plugin-ovl initscripts curl tar gcc libc6-dev git gcc-c++
     yum install -y wget yum-utils bzip2 bzip2-devel && \
     yum install -y fontconfig freetype freetype-devel fontconfig-devel libstdc++ && \
     yum install -y rpm-build patch readline readline-devel libtool bison lzma && \
-    yum install -y which tar
+    yum install -y which tar && \
+    yum install -y libyaml libyaml-devel
 
 # Install RUBY 1.9.3
 # install necessary utilities
@@ -40,4 +41,5 @@ ADD ./build.sh /tmp/
 
 WORKDIR /tmp/
 
-CMD ["./build.sh"]
+RUN /bin/bash -l -c "rvm use 2.1.9 --default"
+ENTRYPOINT ["/bin/bash", "-l", "-c", "./build.sh"]

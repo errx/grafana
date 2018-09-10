@@ -4,7 +4,8 @@
 #   This script is executed from within the container.
 #
 
-CCX64=/tmp/x86_64-centos6-linux-gnu/bin/x86_64-centos6-linux-gnu-gcc
+#CCX64=/tmp/x86_64-centos6-linux-gnu/bin/x86_64-centos6-linux-gnu-gcc
+CCX64=gcc
 
 GOPATH=/go
 REPO_PATH=$GOPATH/src/github.com/grafana/grafana
@@ -20,7 +21,8 @@ else
   CC=${CCX64} go run build.go -buildNumber=${CIRCLE_BUILD_NUM} build
 fi
 
-yarn install --pure-lockfile --no-progress
+gem install fpm -v 1.4
+yarn install --pure-lockfile --no-progress --network-timeout 100000
 
 echo "current dir: $(pwd)"
 
